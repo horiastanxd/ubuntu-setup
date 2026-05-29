@@ -85,4 +85,7 @@ preflight() {
   hint "Internet:     $HAS_INTERNET"
   hint "Log file:     $LOG_FILE"
   [[ "$DRY_RUN" == "true" ]] && hint "Mode:         DRY RUN (no changes will be made)"
+  # Always succeed: with `set -e`, a non-zero exit from the && above would abort
+  # the whole script before the interactive menu ever runs.
+  return 0
 }

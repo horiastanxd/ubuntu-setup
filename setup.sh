@@ -181,7 +181,11 @@ resolve_only() {
       fi
     done
   done
-  printf '%s\n' "${out[@]}"
+  # Emit nothing for an empty result: `printf '%s\n' "${out[@]}"` on an empty
+  # array prints a lone newline, which mapfile would read as one empty element
+  # — silently defeating the "no modules matched" guard in the caller.
+  [[ "${#out[@]}" -gt 0 ]] && printf '%s\n' "${out[@]}"
+  return 0
 }
 
 # profile_files PROFILE — list module files for a preset profile.
@@ -196,7 +200,9 @@ profile_files() {
       desktop) [[ "$rec" == "yes" && "$envs" == *desktop* ]] && out+=("$file") ;;
     esac
   done
-  printf '%s\n' "${out[@]}"
+  # See resolve_only: avoid emitting a lone empty line for an empty result.
+  [[ "${#out[@]}" -gt 0 ]] && printf '%s\n' "${out[@]}"
+  return 0
 }
 
 # interactive_menu — the friendly default experience.
