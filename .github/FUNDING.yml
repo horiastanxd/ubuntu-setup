@@ -1,0 +1,13 @@
+# Funding configuration for ubuntu-setup.
+# Uncomment and fill in the platforms you actually use. Remove the rest.
+# Docs: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
+
+github: [<your-username>]            # GitHub Sponsors username(s)
+
+# patreon: <your-patreon-handle>
+# open_collective: <your-collective>
+# ko_fi: <your-ko-fi-username>
+# buy_me_a_coffee: <your-bmac-username>
+# liberapay: <your-liberapay-username>
+# tidelift: <platform>/<package>
+# custom: ["https://example.com/donate"]

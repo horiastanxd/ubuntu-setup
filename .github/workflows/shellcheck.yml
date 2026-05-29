@@ -1,0 +1,29 @@
+name: Lint shell scripts
+
+# Runs ShellCheck on every push and pull request so problems are caught
+# automatically. The green checkmark also tells visitors the code is healthy.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Syntax check (bash -n)
+        run: |
+          for f in setup.sh lib/*.sh modules/*.sh; do
+            echo "Checking $f"
+            bash -n "$f"
+          done
+
+      - name: ShellCheck
+        run: shellcheck -S warning setup.sh lib/*.sh modules/*.sh

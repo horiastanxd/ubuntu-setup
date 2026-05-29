@@ -1,0 +1,14 @@
+# Logs produced by the script
+*.log
+ubuntu-setup-*.log
+
+# Local backups created during runs
+.ubuntu-setup/
+backups/
+
+# Editor / OS noise
+*.swp
+*~
+.DS_Store
+.idea/
+.vscode/
